@@ -1,0 +1,14 @@
+{
+  "name": "studentelectron",
+  "version": "1.0.0",
+  "description": "Estudos de Electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Thiago Rodrigues",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^9.0.4"
+  }
+}
