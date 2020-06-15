@@ -7,15 +7,38 @@ const path = require('path')
 let win;
 function createWindow() {
   win = new BrowserWindow({
+    backgroundColor: "#f5f2f3",
     width: 400,
     height: 400,
+    maxWidth: 550,
+    maxHeight: 550,
     webPreferences: {
       nodeIntegration: true,
 
     }
   })
+
+  /*
+
+  let child = new BrowserWindow({ parent: win })
+  child.show();
+  win.show(); Possibilidade de abri outra página
+
+  */
+  /** Janelas Modais */
+  let child = new BrowserWindow({
+    parent: win,
+    modal: true,
+    show: false
+  })
+  child.loadURL("https://www.youtube.com/");
+  child.once("ready-to-show", () => {
+    child.show();
+  })
+  /** Ao utilizar a opção parent, é possível criar janelas secundarias: */
+
   win.loadFile("index.html");
-  win.webContents.openDevTools();
+  // win.webContents.openDevTools(); // Abri o DevTools
   win.on('closed', () => {
     // Elimina a referência do objeto da janela, geralmente você iria armazenar as janelas
     // em um array, se seu app suporta várias janelas, este é o momento
